@@ -13,6 +13,10 @@ public abstract class Particle {
         this.color = color;
     }
 
+    public Particle() {
+
+    }
+
     public int getX() { return x; }
     public int getY() { return y; }
     public Color getColor() { return color; }

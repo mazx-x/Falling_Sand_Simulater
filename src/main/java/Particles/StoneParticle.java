@@ -8,7 +8,6 @@ public class StoneParticle extends Particle {
 
     @Override
     public int[] update(Particle[][] grid) {
-        // Wood does not move, so it always returns its current position
         return new int[]{x, y};
     }
 }

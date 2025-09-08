@@ -1,15 +1,22 @@
 package Particles;
 
+import SettingComponents.ParticleSettings;
+
 import java.awt.Color;
 import java.util.Random;
 
 public class SmokeParticle extends Particle {
     private static final Random random = new Random();
     private int lifetime;
+    public static final int DEFAULT_LIFE_TIME = 800;
 
-    public SmokeParticle(int x, int y) {
+    public SmokeParticle(int x, int y , int lifeTime) {
         super(x, y, new Color(100, 100, 100)); // Dark gray smoke color
-        this.lifetime = 500; // Example lifetime
+        this.lifetime = lifeTime; // Example lifetime
+    }
+    public SmokeParticle(int x, int y) {
+        super(x, y, new Color(100, 100, 100));
+        this.lifetime = ParticleSettings.smokeLifetime; // Or use the settings here
     }
 
     @Override

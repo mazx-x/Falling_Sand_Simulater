@@ -1,15 +1,23 @@
 package Particles;
 
+import SettingComponents.ParticleSettings;
+
 import java.awt.Color;
+import java.util.Deque;
 import java.util.Random;
 
 public class FireParticle extends Particle {
     private static final Random random = new Random();
     private int lifetime;
+    public static final int DEFAULT_LIFE_TIME = 350;
 
-    public FireParticle(int x, int y) {
+    public FireParticle(int x, int y ,int lifetime) {
         super(x, y, new Color(255, 100, 0)); // A bright orange color for fire
-        this.lifetime = 350; // Example lifetime (60 FPS * 2 seconds)
+        this.lifetime = lifetime; // Example lifetime (60 FPS * 2 seconds)
+    }
+    public FireParticle(int x, int y) {
+        super(x, y, new Color(255, 100, 0));
+        this.lifetime = ParticleSettings.fireLifetime; // You can use the settings here too
     }
 
     @Override
@@ -33,7 +41,7 @@ public class FireParticle extends Particle {
                         }
                         // Spread if next to wood
                         if (neighbor instanceof WoodParticle) {
-                            grid[checkX][checkY] = new FireParticle(checkX, checkY);
+                            grid[checkX][checkY] = new FireParticle(checkX, checkY, DEFAULT_LIFE_TIME);
                         }
                     }
                 }

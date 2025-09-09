@@ -6,7 +6,6 @@ import java.awt.image.BufferedImage;
 
 import SettingComponents.ParticleSettings;
 import SettingComponents.SettingsPanel;
-import WarningWindow.WarningPanel;
 import com.formdev.flatlaf.extras.FlatSVGIcon;
 
 public class GamePanel extends JPanel implements Runnable {
@@ -15,7 +14,6 @@ public class GamePanel extends JPanel implements Runnable {
     private final int GRID_HEIGHT = 720 / PIXEL_SIZE;
 
     private int smokeLifTime = 100;
-
 
     public int brushRadius = 4;
 
@@ -183,8 +181,6 @@ public class GamePanel extends JPanel implements Runnable {
                         grid[x][y] = new FireParticle(x, y, ParticleSettings.fireLifetime);
                     }  else if (selectedParticle == 'N') {
                         grid[x][y] = new StoneParticle(x, y);
-                    }   else if (selectedParticle == 'E') {
-                        grid[x][y] = new EmptySlotParticle(x, y);
                     }
                 } else if(x >= 0 && x < GRID_WIDTH && y >= 0 && y < GRID_HEIGHT) {
                     if (selectedParticle == 'R') {
@@ -278,17 +274,11 @@ public class GamePanel extends JPanel implements Runnable {
         } else if (selectedParticle == 'A'){
             bufferGraphics.setColor(new Color(50, 150, 255));
 
-        } else if (selectedParticle == 'R'){
-            bufferGraphics.setColor(new Color(188, 188, 188));
-
         } else if (selectedParticle == 'F'){
             bufferGraphics.setColor(new Color(255, 100, 0));
 
         } else if (selectedParticle == 'N'){
             bufferGraphics.setColor(new Color(60, 63, 65));
-
-        } else if (selectedParticle == 'E'){
-            bufferGraphics.setColor(new Color(58, 43, 43, 74));
 
         }
 
